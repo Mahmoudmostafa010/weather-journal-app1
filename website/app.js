@@ -1,7 +1,7 @@
 /* Global Variables */
 
 const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
-const apiKey = '&appid=b9be2844aaf351f6ad862469e0dbe9c5';
+const apiKey = '&appid=b9be2844aaf351f6ad862469e0dbe9c5&units=metric';
 
 //Get the date
 let d = new Date();
@@ -18,7 +18,7 @@ submitbtn.addEventListener('click', (e)=> {
     getDatafromApi(baseURL, zipCod, apiKey)
          .then(function (userData) {
       // add data to POST request
-          postRequiredData('/add', { temp: convertToCelsius(userData.main.temp), date: newDate, content });
+          postRequiredData('/add', { temp: userData.main.temp, date: newDate, content });
           }).then(function (newData) {
       // call updateUI to update browser content
             updateAllData();
@@ -32,14 +32,7 @@ submitbtn.addEventListener('click', (e)=> {
    } 
 );
 
-//function to convert temperature from kelvin to celisus
-function convertToCelsius(kelvin) {
-  if (kelvin < (0)) {
-      return 'below absolute zero (0 K)';
-  } else {
-      return (kelvin - 273.15).toFixed(0);
-  }
-}
+
 
 //Function to GET weather API Data
 const getDatafromApi = async (baseURL, zipCod, apiKey) => {
