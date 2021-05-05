@@ -1,7 +1,7 @@
 /* Global Variables */
 
 const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
-const apiKey = '&appid=255c148d718822b1a4a90810e5df1a7a';
+const apiKey = '&appid=b9be2844aaf351f6ad862469e0dbe9c5';
 
 //Get the date
 let d = new Date();
